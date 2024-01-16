@@ -1,9 +1,9 @@
 # TeacherStudents
 
-This repo will provide the codes to 65 lightweight CNNs used as encoders for 8 encoder-decoder networks for the following paper that is currently "submitted" to an academic journal for possible publication.
+This repo will provide the codes to 65 lightweight CNNs used as encoders for eight encoder-decoder networks (EDNs) for the following paper that is currently "submitted" to an academic journal for possible publication.
 "A Comparative Study of Knowledge Transfer Methods for Misaligned Urban Building Labels". The paper is archived at [https://arxiv.org/abs/2303.09064](https://arxiv.org/abs/2311.03867)
 
-The codes for domain adaptation, knowledge distillation, and deep mutual learning will be available in this repo after the paper is published. For now, a brief explanation of the encoder-decoder networks (EDNs) and 65 CNNs is provided below:
+The codes for domain adaptation, knowledge distillation, and deep mutual learning will be available in this repo after the paper is published. For now, a brief explanation of the EDNs and 65 CNNs is provided below:
 
 ## Encoder-decoder networks (EDNs)
 ### U-Net 
@@ -30,20 +30,55 @@ DeepLabv3+ \cite{chen2018encoder} is the latest reiteration of the DeepLab famil
 ### MANet 
 MANet \cite{fan2020manet} uses a CNN to generate multi-scale hierarchical feature maps of different scales. The maps are then integrated (generally concatenated) into multiple attention heads, each dedicated to a single scale of feature maps. These attention heads operate in parallel, allowing the network to attend to various features simultaneously. Deconvolution layers upsample the outputs of attention heads from the smallest to the input size feature maps to produce the final segmented output.
 
+## Lightweight CNNs for the EDNs
+### ResNet
+ResNet \cite{he2016deep_resnet} is one of the earliest CNNs. Its success comes from the introduction of residual learning and skip connections into CNN that allowed the training of deeper models. They are either two-layers deep (ResNet-18, -34) or three-layers deep (ResNet - 50, -101, -152), with ResNet-18 as the lightest one.
+    
+### DenseNet
+DenseNet \cite{huang2017densely} employs dense blocks to establish dense connections between layers, enabling the linkage of all the layers with matching feature map sizes. DenseNet-121 is the lightest among DenseNet-121, -169, and -201, where the numbers denote the depth of the networks.
+    
+### MobileNet
+MobileNet \cite{howard2017mobilenets} is a lightweight CNN designed for vision tasks on mobile and embedded devices, emphasizing low latency. It leverages depthwise separable convolutions for efficiency. Its iteration, MobileNet-v2 \cite{sandler2018mobilenetv2}, introduces inverted residual blocks to its bottleneck to minimise network parameters. The third iteration, MobileNet-v3 \cite{howard2019searching_mobilenetv3}, is fine-tuned for mobile phone CPUs using network architecture search (NAS) \cite{zoph2016neural} and NetAdapt algorithms to achieve efficient design. Multiple versions of MobileNet-v3 are accessible, catering to diverse resource constraints, and offering both compact and more resource-intensive options.
+
+### MnasNet
+MnasNet \cite{tan2019mnasnet} is a CNN tailored specifically for mobile devices, discovered through automated mobile NAS. It incorporates model latency as its main objective to identify a model that achieves a balance between precision and latency. MnasNet relies on inverted residual blocks, originally hailing from MobileNet-v2, as its fundamental building blocks. MnasNet-small is the lightest version of it.
+    
+### EfficientNet
+EfficientNet \cite{tan2019efficientnet} follows the structure of MnasNet, but with FLOPs (floating point operations per second) as the main rewarding parameter. This is the baseline for the EfficientNetB0, which is further scaled from B1 to B7 with added depth, width, and image resolution. EfficientNet-lite versions were introduced dedicated to mobile devices with ReLU6 activation functions and removed squeeze-and-excitation blocks. EfficientNetv2 \cite{tan2021efficientnetv2} later added Fused-MBConv convolutional blocks along with the NAS component. Similar to v1, several versions are scaled up for v2.
+
+### SK-ResNet
+SK-ResNet is an upgrade to ResNet with Selective Kernel (SK) unit \cite{li2019selective_skresnet} replacing the large kernel convolutions in its bottleneck, and allowing adaptive selection of receptive field size. SK-ResNet-18 is its lightest version.
+
+### Dual path network (DPN)
+DPN \cite{chen2017dualpathnetworks} blends ResNet's feature re-usage capacity with DenseNet's features exploration strategy, developing a new topology of internal connection paths. DPN-68 is its lightest version.
+
+### ResNeSt
+ResNeSt \cite{zhang2022resnest} applies channel-wise attention to different branches of ResNet to capture cross-feature interactions and learn diverse representations. ResNeSt-18 is its lightest version.
+
+### GERNet
+GERNet is the GPU-efficient network (GE-Net) \cite{lin2020neural_gernet} implementation on ResNet that allows a more inexpensive search for GPU-efficient networks compared to NAS. Available versions are small, medium, and large.
+
+### MobileOne
+MobileOne \cite{vasu2023mobileone} from Apple is built upon Google's MobileNet-v1 and MobileNet-v2, dedicated to its mobile devices. They achieved a 1 ms inference in iPhone-12 time by removing the multi-branched architecture during the inference. Five versions of it are available from smallest to largest.
+
+### High-Resolution Net (HRNet)
+HRNet \cite{wang2020deep_hrnet} is a CNN focused on preserving high-resolution features throughout the network. HRNet-18 is its lightest version.
+
+### MobileViT
+MobileViT \cite{mehta2021mobilevit} is a lightweight vision transformer with low latency from Apple dedicated to mobile devices. It offers an alternative approach to handling global information processing using transformers, namely, treating transformers as convolutional units. It comes with small versions ranging from s, xs, and xxs.
+
+### Facebook-Berkeley-Net (FBNet)
+FBNet \cite{wu2019fbnet} is a mobile CNN discovered through automated mobile differentiable NAS. It employs an image block with depthwise convolutions and an inverted residual structure inspired by MobileNetv2. 
+
+### HardCoRe-NAS
+HardCoRe-NAS \cite{nayman2021hardcore} is developed to address the ``soft'' enforcement of constraint by NAS. It employs a scalable search that adheres to hard constraints throughout the search and is based on an accurate definition of the anticipated resource requirement. 
+
+### MixNet
+MixNet \cite{tan2019mixconv} is a mobile CNN from Google Brain that proposes mixed depthwise convolution (MixConv) that is capable of mixing multiple kernel sizes in a single convolution in MobileNets. Three versions of MixNet are available: small, medium, and large.
+
+### TinyNet
+TinyNet \cite{han2020model} is a mobile CNN from Huawei, that is inspired by the scalability of EfficientNet with three dimensions of depth, width, and image resolution. They summarise and derive several TinyNets from EfficientNetB0 based only on depth and image resolution. The size of TinyNet ranges from \textit{a} to \textit{e}.
 
 
-
-If you use the codes from the repo, we appreciate your citation to the paper as:
-
-```json
-@misc{neupane2023comparative,
-      title={A Comparative Study of Knowledge Transfer Methods for Misaligned Urban Building Labels}, 
-      author={Bipul Neupane and Jagannath Aryal and Abbas Rajabifard},
-      year={2023},
-      eprint={2311.03867},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
-}
-```
-Acknowledgement:
+# Acknowledgement
 The authors also express their special gratitude to Segmentation Models Pytorch and Hugging Face for their continuous support towards open and accessible AI - the extensive study would not have been possible without their commendable work.
