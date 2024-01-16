@@ -8,9 +8,15 @@ The codes for domain adaptation, knowledge distillation, and deep mutual learnin
 ## Encoder-decoder networks (EDNs)
 ### U-Net 
 U-Net \cite{ronneberger2015u} is an architecture characterised by its symmetrical structure, consisting of an encoder CNN and a decoder equipped with corresponding upsampling layers. This symmetrical design is implemented to effectively retain and preserve spatial information throughout the network. It leverages skip connections to transfer and concatenate low-level features from the encoder to the corresponding decoder layers with matching dimensions. Each encoder block consists of convolutions, Rectified Linear Unit (ReLU) and max pooling layers. Similarly, the decoder blocks consist of upsampling, concatenation and convolution operations. The encoder can be replaced by other CNNs.
+```json
+Ronneberger, O., Fischer, P., & Brox, T. (2015). U-net: Convolutional networks for biomedical image segmentation. In Medical Image Computing and Computer-Assisted Intervention–MICCAI 2015: 18th International Conference, Munich, Germany, October 5-9, 2015, Proceedings, Part III 18 (pp. 234-241). Springer International Publishing.
+```
     
 ### U-Net++ 
 U-Net++ \cite{zhou2019unet++} is a reiteration of U-Net with nested dense skip connections that enrich the information transported to the decoder layers and reduce the inter-encoder-decoder semantic gaps. The encoder and decoder blocks are similar to the U-Net, however, the skip connections have additional convolution layers.
+```json
+Zhou, Z., Siddiquee, M. M. R., Tajbakhsh, N., & Liang, J. (2019). Unet++: Redesigning skip connections to exploit multiscale features in image segmentation. IEEE transactions on medical imaging, 39(6), 1856-1867.
+```
 
 ### U-Net3+ 
 U-Net3+ \cite{huang2020unet} is the latest reiteration of the U-Net family. Once again, its focus is on improving the skip connections. It offers a full-scale skip connection to reduce the inter-encoder-decoder and intra-decoder semantic gaps. Its decoder layer receives the feature maps of (i) the same-scale encoder layer, (ii) smaller-scale encoder layers supported by non-overlapping max pooling operations, and (iii) larger-scale decoder layers supported by bilinear interpolation. All incoming feature maps are unified with 64 filters of 3x3 size. Subsequently, a feature aggregation mechanism is employed on these 320 (64 $\times$ 5) concatenated maps of five scales. This unification reduces the number of network parameters compared to both U-Net and U-Net++, however, it takes more time to compute because of the increased concatenation operations.
