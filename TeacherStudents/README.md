@@ -142,7 +142,7 @@ Wu, B., Dai, X., Zhang, P., Wang, Y., Sun, F., Wu, Y., ... & Keutzer, K. (2019).
 ```
 
 ### HardCoRe-NAS
-HardCoRe-NAS is developed to address the ``soft'' enforcement of constraint by NAS. It employs a scalable search that adheres to hard constraints throughout the search and is based on an accurate definition of the anticipated resource requirement. 
+HardCoRe-NAS is developed to address the "soft" enforcement of constraint by NAS. It employs a scalable search that adheres to hard constraints throughout the search and is based on an accurate definition of the anticipated resource requirement. 
 ```json
 Nayman, N., Aflalo, Y., Noy, A., & Zelnik, L. (2021, July). Hardcore-nas: Hard constrained differentiable neural architecture search. In International Conference on Machine Learning (pp. 7979-7990). PMLR.
 ```
@@ -154,7 +154,7 @@ Tan, M., & Le, Q. V. (2019). Mixconv: Mixed depthwise convolutional kernels. arX
 ```
 
 ### TinyNet
-TinyNet \cite{han2020model} is a mobile CNN from Huawei, that is inspired by the scalability of EfficientNet with three dimensions of depth, width, and image resolution. They summarise and derive several TinyNets from EfficientNetB0 based only on depth and image resolution. The size of TinyNet ranges from "a" to "e".
+TinyNet is a mobile CNN from Huawei, that is inspired by the scalability of EfficientNet with three dimensions of depth, width, and image resolution. They summarise and derive several TinyNets from EfficientNetB0 based only on depth and image resolution. The size of TinyNet ranges from "a" to "e".
 ```json
 Han, K., Wang, Y., Zhang, Q., Zhang, W., Xu, C., & Zhang, T. (2020). Model rubik’s cube: Twisting resolution, depth and width for tinynets. Advances in Neural Information Processing Systems, 33, 19353-19364.
 ```
