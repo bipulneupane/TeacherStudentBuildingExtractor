@@ -132,7 +132,7 @@ Wang, J., Sun, K., Cheng, T., Jiang, B., Deng, C., Zhao, Y., ... & Xiao, B. (202
 ### MobileViT
 MobileViT is a lightweight vision transformer with low latency from Apple dedicated to mobile devices. It offers an alternative approach to handling global information processing using transformers, namely, treating transformers as convolutional units. It comes with small versions ranging from s, xs, and xxs.
 ```json
-Wang, J., Sun, K., Cheng, T., Jiang, B., Deng, C., Zhao, Y., ... & Xiao, B. (2020). Deep high-resolution representation learning for visual recognition. IEEE transactions on pattern analysis and machine intelligence, 43(10), 3349-3364.
+Mehta, S., & Rastegari, M. (2021). Mobilevit: light-weight, general-purpose, and mobile-friendly vision transformer. arXiv preprint arXiv:2110.02178.
 ```
 
 ### Facebook-Berkeley-Net (FBNet)
